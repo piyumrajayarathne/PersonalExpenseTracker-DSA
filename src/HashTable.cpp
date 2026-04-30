@@ -29,3 +29,9 @@ void updateCategory(string category, float amount, string type) {
         totals[index] += (type == "expense") ? amount : -amount;
     }
 }
+
+void showCategorySummary() {
+    for(int i = 0; i < sizeT; i++) {
+        cout << categories[i] << " : " << totals[i] << endl;
+    }
+}
