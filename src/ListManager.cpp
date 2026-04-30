@@ -33,3 +33,34 @@ void displayTransactions() {
              << transactions[i].type << endl;
     }
 }
+
+Transaction* getTransactions() {
+    return transactions;
+}
+
+int getCount() {
+    return countT;
+}
+
+void deleteTransaction(int id) {
+    int index = -1;
+
+    for(int i = 0; i < countT; i++) {
+        if(transactions[i].id == id) {
+            index = i;
+            break;
+        }
+    }
+
+    if(index == -1) {
+        cout << "Transaction not found\n";
+        return;
+    }
+
+    for(int i = index; i < countT - 1; i++) {
+        transactions[i] = transactions[i + 1];
+    }
+
+    countT--;
+}
+
