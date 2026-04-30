@@ -6,4 +6,9 @@
 void addTransaction();
 void displayTransactions();
 
+void deleteTransaction(int id);
+Transaction* getTransactions();
+int getCount();
+
+
 #endif
