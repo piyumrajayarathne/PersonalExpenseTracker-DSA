@@ -52,7 +52,14 @@ cin >> choice;
             case 5:
     showCategorySummary();
     break;
+            case 0:
+    cout << "Exiting...";
+    break;
+
+default:
+    cout << "Invalid choice!";
         }
+    
 
     } while(choice != 0);
 
