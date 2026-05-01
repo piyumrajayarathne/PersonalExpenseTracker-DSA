@@ -9,11 +9,15 @@ int main() {
     int choice;
 
     do {
-        cout << "\n1. Add Transaction\n";
-        cout << "2. Display Transactions\n";
-        cout << "0. Exit\n";
-        cout << "Enter choice: ";
-        cin >> choice;
+       cout << "\n1. Add Transaction";
+cout << "\n2. Display Transactions";
+cout << "\n3. Delete Transaction";
+cout << "\n4. Undo Last Transaction";
+cout << "\n5. Category Summary";
+cout << "\n0. Exit";
+
+cout << "\nEnter choice: ";
+cin >> choice;
 
         switch(choice) {
             case 1: {
@@ -31,6 +35,23 @@ int main() {
             case 2:
                 displayTransactions();
                 break;
+            case 3: {
+    int id;
+    cout << "Enter ID to delete: ";
+    cin >> id;
+    deleteTransaction(id);
+    break;
+}
+            case 4: {
+    if(!isEmpty()) {
+        Transaction t = popTransaction();
+        deleteTransaction(t.id);
+    }
+    break;
+}
+            case 5:
+    showCategorySummary();
+    break;
         }
 
     } while(choice != 0);
