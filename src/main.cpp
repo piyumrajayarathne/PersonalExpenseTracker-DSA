@@ -56,7 +56,7 @@ cin >> choice;
     cout << "Exiting...";
     break;
 
-default:
+            default:
     cout << "Invalid choice!";
         }
     
