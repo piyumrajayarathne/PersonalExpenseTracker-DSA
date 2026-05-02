@@ -9,55 +9,74 @@ int main() {
     int choice;
 
     do {
-       cout << "\n1. Add Transaction";
-cout << "\n2. Display Transactions";
-cout << "\n3. Delete Transaction";
-cout << "\n4. Undo Last Transaction";
-cout << "\n5. Category Summary";
-cout << "\n0. Exit";
+        cout << "\n===== PERSONAL EXPENSE TRACKER =====\n";
+        cout << "\n1. Add Transaction";
+        cout << "\n2. Display Transactions";
+        cout << "\n3. Delete Transaction";
+        cout << "\n4. Undo Last Transaction";
+        cout << "\n5. Category Summary";
+        cout << "\n6. Show Balance";
+        cout << "\n0. Exit";
 
-cout << "\nEnter choice: ";
-cin >> choice;
+        cout << "\nEnter choice: ";
+        cin >> choice;
 
         switch(choice) {
             case 1: {
-    addTransaction();
+                addTransaction();
 
-    Transaction* t = getTransactions();
-    int c = getCount();
+                Transaction* t = getTransactions();
+                int c = getCount();
 
-    pushTransaction(t[c-1]);
-    updateCategory(t[c-1].category, t[c-1].amount, t[c-1].type);
+                pushTransaction(t[c-1]);
+                updateCategory(t[c-1].category, t[c-1].amount, t[c-1].type);
 
-    break;
-}
+                break;
+            }
 
             case 2:
                 displayTransactions();
                 break;
-            case 3: {
-    int id;
-    cout << "Enter ID to delete: ";
-    cin >> id;
-    deleteTransaction(id);
-    break;
-}
-            case 4: {
-    if(!isEmpty()) {
-        Transaction t = popTransaction();
-        deleteTransaction(t.id);
-    }
-    break;
-}
-            case 5:
-    showCategorySummary();
-    break;
-            case 0:
-    cout << "Exiting...";
-    break;
 
+<<<<<<< HEAD
             default:
     cout << "Invalid choice!";
+=======
+            case 3: {
+                int id;
+                cout << "Enter ID to delete: ";
+                cin >> id;
+                deleteTransaction(id);
+                break;
+            }
+
+            case 4: {
+                if(!isEmpty()) {
+                    Transaction t = popTransaction();
+                    deleteTransaction(t.id);
+                }
+                break;
+            }
+
+            case 5:
+                showCategorySummary();
+                break;
+
+            case 6: {
+                cout << "\n--- Balance ---\n";
+                cout << "Total Income  : " << getTotalIncome() << endl;
+                cout << "Total Expense : " << getTotalExpense() << endl;
+                cout << "Net Balance   : " << getBalance() << endl;
+                break;
+            }
+
+            case 0:
+                cout << "Exiting...";
+                break;
+
+            default:
+                cout << "Invalid choice!";
+>>>>>>> 6bedf3c96f92b9f6f0450790bfd8f5813500ecf8
         }
     
 

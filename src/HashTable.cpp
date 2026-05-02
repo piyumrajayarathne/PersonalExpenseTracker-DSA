@@ -3,13 +3,12 @@
 
 using namespace std;
 
-void showCategorySummary() {
-    cout << "Category summary " << endl;
-}
-
 string categories[10];
 float totals[10];
 int sizeT = 0;
+
+float totalIncome = 0;
+float totalExpense = 0;
 
 int findCategory(string c) {
     for(int i = 0; i < sizeT; i++) {
@@ -23,10 +22,16 @@ void updateCategory(string category, float amount, string type) {
 
     if(index == -1) {
         categories[sizeT] = category;
-        totals[sizeT] = (type == "expense") ? amount : -amount;
+        totals[sizeT] = amount;
         sizeT++;
     } else {
-        totals[index] += (type == "expense") ? amount : -amount;
+        totals[index] += amount;
+    }
+
+    if(type == "income") {
+        totalIncome += amount;
+    } else if(type == "expense") {
+        totalExpense += amount;
     }
 }
 
@@ -35,3 +40,7 @@ void showCategorySummary() {
         cout << categories[i] << " : " << totals[i] << endl;
     }
 }
+
+float getTotalIncome() { return totalIncome; }
+float getTotalExpense() { return totalExpense; }
+float getBalance() { return totalIncome - totalExpense; }

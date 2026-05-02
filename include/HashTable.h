@@ -5,6 +5,9 @@ using namespace std;
 
 void showCategorySummary();
 void updateCategory(string category, float amount, string type);
-void showCategorySummary();
+
+float getTotalIncome();
+float getTotalExpense();
+float getBalance();
 
 #endif
