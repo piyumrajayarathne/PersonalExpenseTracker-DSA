@@ -9,11 +9,13 @@ int main() {
     int choice;
 
     do {
+        cout << "\n===== PERSONAL EXPENSE TRACKER =====\n";
         cout << "\n1. Add Transaction";
         cout << "\n2. Display Transactions";
         cout << "\n3. Delete Transaction";
         cout << "\n4. Undo Last Transaction";
         cout << "\n5. Category Summary";
+        cout << "\n6. Show Balance";
         cout << "\n0. Exit";
 
         cout << "\nEnter choice: ";
