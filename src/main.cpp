@@ -38,10 +38,6 @@ int main() {
                 displayTransactions();
                 break;
 
-<<<<<<< HEAD
-            default:
-    cout << "Invalid choice!";
-=======
             case 3: {
                 int id;
                 cout << "Enter ID to delete: ";
@@ -76,7 +72,6 @@ int main() {
 
             default:
                 cout << "Invalid choice!";
->>>>>>> 6bedf3c96f92b9f6f0450790bfd8f5813500ecf8
         }
     
 
