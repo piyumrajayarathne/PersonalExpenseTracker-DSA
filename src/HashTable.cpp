@@ -3,10 +3,6 @@
 
 using namespace std;
 
-void showCategorySummary() {
-    cout << "Category summary " << endl;
-}
-
 string categories[10];
 float totals[10];
 int sizeT = 0;
