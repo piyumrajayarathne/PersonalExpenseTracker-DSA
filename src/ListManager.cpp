@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "../include/ListManager.h"
 using namespace std;
 
@@ -23,14 +24,28 @@ void addTransaction() {
 
     transactions[countT++] = t;
 }
+string padRight(string text, int width) {
+    if (text.length() >= width) {
+        return text.substr(0, width - 1) + " ";
+    }
+    return text + string(width - text.length(), ' ');
+}
 
 void displayTransactions() {
+    cout << padRight("\nID", 5);
+    cout << padRight("Amount", 10);
+    cout << padRight("Category", 15);
+    cout << padRight("Date", 15);
+    cout << padRight("Type", 10) << endl;
+
+    cout << "------------------------------------------------\n";
+    
     for(int i = 0; i < countT; i++) {
-        cout << transactions[i].id << " "
-             << transactions[i].amount << " "
-             << transactions[i].category << " "
-             << transactions[i].date << " "
-             << transactions[i].type << endl;
+        cout << padRight(to_string(transactions[i].id), 5);
+        cout << padRight(to_string((int)transactions[i].amount), 10);
+        cout << padRight(transactions[i].category, 15);
+        cout << padRight(transactions[i].date, 15);
+        cout << padRight(transactions[i].type, 10) << endl;
     }
 }
 
