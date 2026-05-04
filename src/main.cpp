@@ -5,6 +5,30 @@
 
 using namespace std;
 
+void showBalance() {
+    cout << "\n===== BALANCE SUMMARY =====\n\n";
+
+    cout << "Item            Amount\n";
+    cout << "----------------------------\n";
+
+    cout << "Total Income";
+    int space1 = 16 - 12;
+    while(space1-- > 0) cout << " ";
+    cout << getTotalIncome() << endl;
+
+    cout << "Total Expense";
+    int space2 = 16 - 13;
+    while(space2-- > 0) cout << " ";
+    cout << getTotalExpense() << endl;
+
+    cout << "----------------------------\n";
+
+    cout << "Net Balance";
+    int space3 = 16 - 11;
+    while(space3-- > 0) cout << " ";
+    cout << getBalance() << endl;
+}
+
 int main() {
     int choice;
 
@@ -58,13 +82,9 @@ int main() {
                 showCategorySummary();
                 break;
 
-            case 6: {
-                cout << "\n--- Balance ---\n";
-                cout << "Total Income  : " << getTotalIncome() << endl;
-                cout << "Total Expense : " << getTotalExpense() << endl;
-                cout << "Net Balance   : " << getBalance() << endl;
+            case 6: 
+                showBalance();
                 break;
-            }
 
             case 0:
                 cout << "Exiting...";
