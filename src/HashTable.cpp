@@ -61,3 +61,15 @@ void showCategorySummary() {
 
     cout << total << endl;
 }
+
+float getTotalIncome() {  
+    return totalIncome;  
+}  
+
+float getTotalExpense() {  
+    return totalExpense;  
+}  
+
+float getBalance() {  
+    return totalIncome - totalExpense;  
+}
