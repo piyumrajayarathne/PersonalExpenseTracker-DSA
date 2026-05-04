@@ -36,11 +36,28 @@ void updateCategory(string category, float amount, string type) {
 }
 
 void showCategorySummary() {
-    for(int i = 0; i < sizeT; i++) {
-        cout << categories[i] << " : " << totals[i] << endl;
-    }
-}
+    cout << "\n===== CATEGORY SUMMARY =====\n\n";
 
-float getTotalIncome() { return totalIncome; }
-float getTotalExpense() { return totalExpense; }
-float getBalance() { return totalIncome - totalExpense; }
+    cout << "Category        Total\n";
+    cout << "----------------------------\n";
+
+    float total = 0;
+
+    for(int i = 0; i < sizeT; i++) {
+        cout << categories[i];
+        int space = 16 - categories[i].length();
+        while(space-- > 0) cout << " ";
+        cout << totals[i] << endl;
+
+        total += totals[i];
+    }
+
+    cout << "----------------------------\n";
+
+    cout << "Total";
+
+    int space = 16 - 5;
+    while(space-- > 0) cout << " ";
+
+    cout << total << endl;
+}
