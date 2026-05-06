@@ -7,6 +7,19 @@ using namespace std;
 Transaction transactions[100];
 int countT = 0;
 
+bool isValidDate(string date) {
+    if(date.length() != 10) return false;
+
+    if(date[4] != '-' || date[7] != '-') return false;
+
+    for(int i = 0; i < date.length(); i++) {
+        if(i == 4 || i == 7) continue;
+        if(!isdigit(date[i])) return false;
+    }
+
+    return true;
+}
+
 void addTransaction() {
     Transaction t;
     t.id = countT + 1;
@@ -28,7 +41,15 @@ void addTransaction() {
     cin >> t.category;
 
     cout << "Enter date: ";
+    do {
+    cout << "Enter date (YYYY-MM-DD): ";
     cin >> t.date;
+
+    if(!isValidDate(t.date)) {
+        cout << "Invalid date format!\n";
+    }
+
+    } while(!isValidDate(t.date));
 
     do {
         cout << "Enter type (income/expense): ";
