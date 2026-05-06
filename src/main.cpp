@@ -43,7 +43,17 @@ int main() {
         cout << "\n0. Exit";
 
         cout << "\nEnter choice: ";
-        cin >> choice;
+
+do {
+    cin >> choice;
+
+    if(cin.fail() || choice < 0 || choice > 6) {
+        cout << "Invalid choice! Please enter a number between 0 and 6.\n";
+        cin.clear();
+        cin.ignore(1000, '\n');
+    }
+
+} while(cin.fail() || choice < 0 || choice > 6);
 
         switch(choice) {
             case 1: {
