@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "../include/ListManager.h"
+
 using namespace std;
 
 Transaction transactions[100];
@@ -10,8 +11,18 @@ void addTransaction() {
     Transaction t;
     t.id = countT + 1;
 
-    cout << "Enter amount: ";
-    cin >> t.amount;
+    do {
+        cout << "Enter amount: ";
+        cin >> t.amount;
+
+        if(cin.fail() || t.amount <= 0) {
+            cout << "Invalid amount! Enter a positive number.\n";
+
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }
+
+    } while(cin.fail() || t.amount <= 0);
 
     cout << "Enter category: ";
     cin >> t.category;
@@ -19,32 +30,56 @@ void addTransaction() {
     cout << "Enter date: ";
     cin >> t.date;
 
-    cout << "Enter type (income/expense): ";
-    cin >> t.type;
+    do {
+        cout << "Enter type (income/expense): ";
+        cin >> t.type;
+
+        if(t.type != "income" && t.type != "expense") {
+            cout << "Invalid type! Enter only income or expense.\n";
+        }
+
+    } while(t.type != "income" && t.type != "expense");
 
     transactions[countT++] = t;
+
+    cout << "Transaction added successfully!\n";
 }
+
 string padRight(string text, int width) {
-    if (text.length() >= width) {
+    if(text.length() >= width) {
         return text.substr(0, width - 1) + " ";
     }
+
     return text + string(width - text.length(), ' ');
 }
 
 void displayTransactions() {
+
+    if(countT == 0) {
+        cout << "\nNo transactions available.\n";
+        return;
+    }
+
     cout << padRight("\nID", 5);
     cout << padRight("Amount", 10);
     cout << padRight("Category", 15);
     cout << padRight("Date", 15);
     cout << padRight("Type", 10) << endl;
 
-    cout << "------------------------------------------------\n";
-    
+    cout << "-----------------------------------------------------------\n";
+
     for(int i = 0; i < countT; i++) {
+
         cout << padRight(to_string(transactions[i].id), 5);
-        cout << padRight(to_string((int)transactions[i].amount), 10);
+
+        cout << padRight(
+            to_string((int)transactions[i].amount), 10
+        );
+
         cout << padRight(transactions[i].category, 15);
+
         cout << padRight(transactions[i].date, 15);
+
         cout << padRight(transactions[i].type, 10) << endl;
     }
 }
@@ -58,9 +93,11 @@ int getCount() {
 }
 
 void deleteTransaction(int id) {
+
     int index = -1;
 
     for(int i = 0; i < countT; i++) {
+
         if(transactions[i].id == id) {
             index = i;
             break;
@@ -68,7 +105,7 @@ void deleteTransaction(int id) {
     }
 
     if(index == -1) {
-        cout << "Transaction not found\n";
+        cout << "Transaction not found!\n";
         return;
     }
 
@@ -77,5 +114,6 @@ void deleteTransaction(int id) {
     }
 
     countT--;
-}
 
+    cout << "Transaction deleted successfully!\n";
+}
