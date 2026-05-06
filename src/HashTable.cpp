@@ -4,7 +4,8 @@
 using namespace std;
 
 string categories[10];
-float totals[10];
+float expenseTotals[10];
+float incomeTotals[10];
 int sizeT = 0;
 
 float totalIncome = 0;
@@ -22,44 +23,66 @@ void updateCategory(string category, float amount, string type) {
 
     if(index == -1) {
         categories[sizeT] = category;
-        totals[sizeT] = amount;
+        expenseTotals[sizeT] = 0;
+        incomeTotals[sizeT] = 0;
+        index = sizeT;
         sizeT++;
-    } else {
-        totals[index] += amount;
     }
 
-    if(type == "income") {
-        totalIncome += amount;
-    } else if(type == "expense") {
+    if(type == "expense") {
+        expenseTotals[index] += amount;
         totalExpense += amount;
+    } else if(type == "income") {
+        incomeTotals[index] += amount;
+        totalIncome += amount;
     }
 }
 
 void showCategorySummary() {
     cout << "\n===== CATEGORY SUMMARY =====\n\n";
 
-    cout << "Category        Total\n";
-    cout << "----------------------------\n";
+    cout << "Category        Expense     Income      Total\n";
+    cout << "------------------------------------------------\n";
 
-    float total = 0;
+    float sumExpense = 0;
+    float sumIncome = 0;
+
 
     for(int i = 0; i < sizeT; i++) {
+        float total = expenseTotals[i] + incomeTotals[i];
+
         cout << categories[i];
         int space = 16 - categories[i].length();
         while(space-- > 0) cout << " ";
-        cout << totals[i] << endl;
 
-        total += totals[i];
+        cout << expenseTotals[i];
+        int space2 = 12 - to_string((int)expenseTotals[i]).length();
+        while(space2-- > 0) cout << " ";
+
+        cout << incomeTotals[i];
+        int space3 = 12 - to_string((int)incomeTotals[i]).length();
+        while(space3-- > 0) cout << " ";
+
+        cout << total << endl;
+
+        sumExpense += expenseTotals[i];
+        sumIncome += incomeTotals[i];
     }
 
-    cout << "----------------------------\n";
+    cout << "------------------------------------------------\n";
 
     cout << "Total";
-
     int space = 16 - 5;
     while(space-- > 0) cout << " ";
 
-    cout << total << endl;
+    cout << sumExpense;
+    int spaceE = 12 - to_string((int)totalExpense).length();
+    while(spaceE-- > 0) cout << " ";
+
+    cout << sumIncome;
+    int spaceI = 12 - to_string((int)totalIncome).length();
+    while(spaceI-- > 0) cout << " ";
+
 }
 
 float getTotalIncome() {  
