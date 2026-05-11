@@ -44,18 +44,18 @@ int main() {
 
         cout << "\nEnter choice: ";
 
-do {
-    cin >> choice;
+    do {
+        cin >> choice;
 
-    if(cin.fail() || choice < 0 || choice > 6) {
-        cout << "Invalid choice! Please enter a number between 0 and 6.\n";
-        cin.clear();
-        cin.ignore(1000, '\n');
-    }
+        if(cin.fail() || choice < 0 || choice > 6) {
+            cout << "Invalid choice! Please enter a number between 0 and 6.\n";
+            cin.clear();
+            cin.ignore(1000, '\n');
+        }
 
-} while(cin.fail() || choice < 0 || choice > 6);
+    } while(cin.fail() || choice < 0 || choice > 6);
 
-        switch(choice) {
+    switch(choice) {
             case 1: {
                 addTransaction();
 
@@ -73,9 +73,24 @@ do {
                 break;
 
             case 3: {
+                if(getCount() == 0) {
+                    cout << "No transactions to delete!\n";
+                    break;
+                }
                 int id;
-                cout << "Enter ID to delete: ";
-                cin >> id;
+
+                do {
+                    cout << "Enter ID to delete: ";
+                    cin >> id;
+
+                    if(cin.fail() || id <= 0) {
+                    cout << "Invalid ID! Enter a valid number.\n";
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+                    }
+
+                } while(cin.fail() || id <= 0);
+
                 deleteTransaction(id);
                 break;
             }
