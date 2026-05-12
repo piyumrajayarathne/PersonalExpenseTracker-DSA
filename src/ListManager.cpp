@@ -1,11 +1,8 @@
 #include <iostream>
 #include <string>
-#include <fstream>
 #include "../include/ListManager.h"
 
 using namespace std;
-
-void exportToJSON();
 
 Transaction transactions[100];
 int countT = 0;
@@ -65,8 +62,6 @@ void addTransaction() {
     } while(t.type != "income" && t.type != "expense");
 
     transactions[countT++] = t;
-
-    exportToJSON();
 
     cout << "Transaction added successfully!\n";
 }
@@ -141,40 +136,7 @@ void deleteTransaction(int id) {
 
     countT--;
 
-    exportToJSON();
 
     cout << "Transaction deleted successfully!\n";
 }
 
-void exportToJSON() {
-
-    ofstream file("transactions.json");
-
-    file << "[\n";
-
-    for(int i = 0; i < countT; i++) {
-
-        file << "  {\n";
-
-        file << "    \"id\": " << transactions[i].id << ",\n";
-
-        file << "    \"amount\": " << transactions[i].amount << ",\n";
-
-        file << "    \"category\": \"" << transactions[i].category << "\",\n";
-
-        file << "    \"date\": \"" << transactions[i].date << "\",\n";
-
-        file << "    \"type\": \"" << transactions[i].type << "\"\n";
-
-        file << "  }";
-
-        if(i != countT - 1)
-            file << ",";
-
-        file << "\n";
-    }
-
-    file << "]";
-
-    file.close();
-}
