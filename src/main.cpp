@@ -6,7 +6,7 @@
 using namespace std;
 
 void showBalance() {
-    cout << "\n===== BALANCE SUMMARY =====\n\n";
+    cout << "\n====== BALANCE SUMMARY ======\n\n";
 
     cout << "Item            Amount\n";
     cout << "----------------------------\n";
@@ -26,14 +26,14 @@ void showBalance() {
     cout << "Net Balance";
     int space3 = 16 - 11;
     while(space3-- > 0) cout << " ";
-    cout << getBalance() << endl;
+    cout << "Rs. "<< getBalance() << endl;
 }
 
 int main() {
     int choice;
 
     do {
-        cout << "\n===== PERSONAL EXPENSE TRACKER =====\n";
+        cout << "\n\n===== PERSONAL EXPENSE TRACKER =====\n";
         cout << "\n1. Add Transaction";
         cout << "\n2. Display Transactions";
         cout << "\n3. Delete Transaction";

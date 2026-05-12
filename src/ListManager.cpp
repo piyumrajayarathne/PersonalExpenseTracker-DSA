@@ -81,10 +81,10 @@ void displayTransactions() {
         return;
     }
 
-    cout << padRight("\nID", 5);
-    cout << padRight("Amount", 10);
-    cout << padRight("Category", 15);
-    cout << padRight("Date", 15);
+    cout << padRight("\nID", 6);
+    cout << padRight("Amount", 14);
+    cout << padRight("Category", 17);
+    cout << padRight("Date", 14);
     cout << padRight("Type", 10) << endl;
 
     cout << "-----------------------------------------------------------\n";
@@ -93,7 +93,7 @@ void displayTransactions() {
 
         cout << padRight(to_string(transactions[i].id), 5);
 
-        cout << padRight(
+        cout << "Rs. "<< padRight(
             to_string((int)transactions[i].amount), 10
         );
 
