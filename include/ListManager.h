@@ -13,4 +13,7 @@ int getCount();
 void bubbleSortTransactions();
 void searchByCategory(string category);
 
+void showHighestExpense();
+void totalTransactions();
+
 #endif

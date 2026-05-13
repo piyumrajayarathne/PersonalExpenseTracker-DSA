@@ -215,4 +215,50 @@ void searchByCategory(string category) {
     }
 }
 
+void showHighestExpense() {
 
+    if(countT == 0) {
+        cout << "\nNo Transactions Available.\n";
+        return;
+    }
+
+    int highestIndex = -1;
+    float highestAmount = 0;
+
+    for(int i = 0; i < countT; i++) {
+
+        if(transactions[i].type == "expense") {
+
+            if(transactions[i].amount > highestAmount) {
+
+                highestAmount = transactions[i].amount;
+                highestIndex = i;
+            }
+        }
+    }
+
+    if(highestIndex == -1) {
+        cout << "\nNo Expense Transactions Found.\n";
+        return;
+    }
+
+    cout << "\n===== HIGHEST EXPENSE =====\n\n";
+
+    cout << "ID: "
+         << transactions[highestIndex].id << endl;
+
+    cout << "Amount: Rs. "
+         << transactions[highestIndex].amount << endl;
+
+    cout << "Category: "
+         << transactions[highestIndex].category << endl;
+
+    cout << "Date: "
+         << transactions[highestIndex].date << endl;
+}
+
+void totalTransactions() {
+
+    cout << "\nTotal Transactions: "
+         << countT << endl;
+}

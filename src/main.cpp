@@ -42,6 +42,8 @@ int main() {
         cout << "\n6. Show Balance";
         cout << "\n7. Sort Transactions";
         cout << "\n8. Search by Category";
+        cout << "\n9. Show Highest Expense";
+        cout << "\n10. Total Transactions";
         cout << "\n0. Exit";
 
         cout << "\nEnter choice: ";
@@ -125,6 +127,14 @@ int main() {
                 searchByCategory(category);
                 break;
             }
+
+            case 9:
+                showHighestExpense();
+                break;
+
+            case 10:
+                totalTransactions();
+                break;
 
             case 0:
                 cout << "Exiting...";
