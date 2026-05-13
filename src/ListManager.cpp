@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <utility>
 #include "../include/ListManager.h"
 
 using namespace std;
@@ -139,4 +140,60 @@ void deleteTransaction(int id) {
 
     cout << "Transaction deleted successfully!\n";
 }
+
+void bubbleSortTransactions() {
+
+    for(int i = 0; i < countT - 1; i++) {
+
+        for(int j = 0; j < countT - i - 1; j++) {
+
+            if(transactions[j].amount >
+               transactions[j + 1].amount) {
+
+                swap(transactions[j],
+                     transactions[j + 1]);
+            }
+        }
+    }
+
+    cout << "\nTransactions Sorted Successfully.\n";
+}
+
+void searchByCategory(string category) {
+
+    bool found = false;
+
+    cout << "\n===== SEARCH RESULTS =====\n\n";
+
+    for(int i = 0; i < countT; i++) {
+
+        if(transactions[i].category == category) {
+
+            cout << "ID: "
+                 << transactions[i].id << endl;
+
+            cout << "Amount: Rs. "
+                 << transactions[i].amount << endl;
+
+            cout << "Category: "
+                 << transactions[i].category << endl;
+
+            cout << "Date: "
+                 << transactions[i].date << endl;
+
+            cout << "Type: "
+                 << transactions[i].type << endl;
+
+            cout << "---------------------\n";
+
+            found = true;
+        }
+    }
+
+    if(!found) {
+
+        cout << "No Transactions Found.\n";
+    }
+}
+
 

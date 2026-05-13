@@ -10,5 +10,7 @@ void deleteTransaction(int id);
 Transaction* getTransactions();
 int getCount();
 
+void bubbleSortTransactions();
+void searchByCategory(string category);
 
 #endif

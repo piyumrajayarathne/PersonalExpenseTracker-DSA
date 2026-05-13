@@ -40,6 +40,8 @@ int main() {
         cout << "\n4. Undo Last Transaction";
         cout << "\n5. Category Summary";
         cout << "\n6. Show Balance";
+        cout << "\n7. Sort Transactions by Amount";
+        cout << "\n8. Search by Category";
         cout << "\n0. Exit";
 
         cout << "\nEnter choice: ";
@@ -47,13 +49,13 @@ int main() {
     do {
         cin >> choice;
 
-        if(cin.fail() || choice < 0 || choice > 6) {
-            cout << "Invalid choice! Please enter a number between 0 and 6.\n";
+        if(cin.fail() || choice < 0 || choice > 10) {
+            cout << "Invalid choice! Please enter a number between 0 and 10.\n";
             cin.clear();
             cin.ignore(1000, '\n');
         }
 
-    } while(cin.fail() || choice < 0 || choice > 6);
+    } while(cin.fail() || choice < 0 || choice > 10);
 
     switch(choice) {
             case 1: {
@@ -110,6 +112,19 @@ int main() {
             case 6: 
                 showBalance();
                 break;
+
+            case 7:
+    bubbleSortTransactions();
+    displayTransactions();
+    break;
+
+case 8: {
+    string category;
+    cout << "Enter Category: ";
+    cin >> category;
+    searchByCategory(category);
+    break;
+}
 
             case 0:
                 cout << "Exiting...";
