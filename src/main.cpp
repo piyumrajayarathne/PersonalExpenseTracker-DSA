@@ -40,7 +40,7 @@ int main() {
         cout << "\n4. Undo Last Transaction";
         cout << "\n5. Category Summary";
         cout << "\n6. Show Balance";
-        cout << "\n7. Sort Transactions by Amount";
+        cout << "\n7. Sort Transactions";
         cout << "\n8. Search by Category";
         cout << "\n0. Exit";
 
