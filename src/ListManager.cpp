@@ -223,15 +223,13 @@ void showHighestExpense() {
     }
 
     int highestIndex = -1;
-    float highestAmount = 0;
 
     for(int i = 0; i < countT; i++) {
 
         if(transactions[i].type == "expense") {
 
-            if(transactions[i].amount > highestAmount) {
-
-                highestAmount = transactions[i].amount;
+             if(highestIndex == -1 ||
+               transactions[i].amount > transactions[highestIndex].amount) {
                 highestIndex = i;
             }
         }
