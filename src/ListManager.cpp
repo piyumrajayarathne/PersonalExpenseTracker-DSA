@@ -147,21 +147,40 @@ void bubbleSortTransactions() {
 
         for(int j = 0; j < countT - i - 1; j++) {
 
+            bool shouldSwap = false;
+
             if(transactions[j].amount >
                transactions[j + 1].amount) {
 
-                swap(transactions[j],
-                     transactions[j + 1]);
+                shouldSwap = true;
+            }else if(
+                transactions[j].amount ==
+                transactions[j + 1].amount
+            ) {
+
+                if(transactions[j].date >
+                   transactions[j + 1].date) {
+
+                    shouldSwap = true;
+                }
+            }
+
+            if(shouldSwap) {
+
+                swap(
+                    transactions[j],
+                    transactions[j + 1]
+                );
             }
         }
     }
-
     cout << "\nTransactions Sorted Successfully.\n";
 }
 
+
 void searchByCategory(string category) {
 
-    bool found = false;
+    bool isFound = false;
 
     cout << "\n===== SEARCH RESULTS =====\n\n";
 
@@ -186,11 +205,11 @@ void searchByCategory(string category) {
 
             cout << "---------------------\n";
 
-            found = true;
+            isFound = true;
         }
     }
 
-    if(!found) {
+    if(!isFound) {
 
         cout << "No Transactions Found.\n";
     }

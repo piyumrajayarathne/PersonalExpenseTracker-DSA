@@ -114,17 +114,17 @@ int main() {
                 break;
 
             case 7:
-    bubbleSortTransactions();
-    displayTransactions();
-    break;
+                bubbleSortTransactions();
+                displayTransactions();
+                break;
 
-case 8: {
-    string category;
-    cout << "Enter Category: ";
-    cin >> category;
-    searchByCategory(category);
-    break;
-}
+            case 8: {
+                string category;
+                cout << "Enter Category: ";
+                cin >> category;
+                searchByCategory(category);
+                break;
+            }
 
             case 0:
                 cout << "Exiting...";
