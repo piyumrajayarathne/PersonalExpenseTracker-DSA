@@ -1,35 +1,35 @@
 #include <iostream>
 #include <string>
-#include <utility>
+#include <utility> //std::swap
 #include "../include/ListManager.h"
 
 using namespace std;
 
-Transaction transactions[100];
-int countT = 0;
+Transaction transactions[100]; //transaction object array
+int countT = 0;  // counts Transactions
 
-bool isValidDate(string date) {
+bool isValidDate(string date) {    // Validate date format YYYY-MM-DD
     if(date.length() != 10) return false;
 
-    if(date[4] != '-' || date[7] != '-') return false;
+    if(date[4] != '-' || date[7] != '-') return false;  //array indexing
 
     for(int i = 0; i < date.length(); i++) {
-        if(i == 4 || i == 7) continue;
-        if(!isdigit(date[i])) return false;
+        if(i == 4 || i == 7) continue; //jump to next iteration
+        if(!isdigit(date[i])) return false;  //isdigit standard library included in iostream
     }
 
     return true;
 }
 
-void addTransaction() {
-    Transaction t;
-    t.id = countT + 1;
+void addTransaction() {  //uses arrays
+    Transaction t;  //local transaction object
+    t.id = countT + 1;  //assigns id=unique value
 
     do {
         cout << "Enter amount: ";
-        cin >> t.amount;
+        cin >> t.amount;  //float
 
-        if(cin.fail() || t.amount <= 0) {
+        if(cin.fail() || t.amount <= 0) {  //cin.fail() checks if input is not a valid float
             cout << "Invalid amount! Enter a positive number.\n";
 
             cin.clear();
@@ -46,7 +46,7 @@ void addTransaction() {
     cout << "Enter date (YYYY-MM-DD): ";
     cin >> t.date;
 
-    if(!isValidDate(t.date)) {
+    if(!isValidDate(t.date)) {   // Validate date format with boolean function
         cout << "Invalid date format!\n";
     }
 
@@ -67,13 +67,13 @@ void addTransaction() {
     cout << "Transaction added successfully!\n";
 }
 
-string padRight(string text, int width) {
+string padRight(string text, int width) {   //table formatting
     if(text.length() >= width) {
-        return text.substr(0, width - 1) + " ";
-    }
+        return text.substr(0, width - 1) + " "; //take width-1 char substring 
+    }                                           //returns trimmed text
 
-    return text + string(width - text.length(), ' ');
-}
+    return text + string(width - text.length(), ' '); 
+}  // if text is shorter than width
 
 void displayTransactions() {
 
@@ -82,7 +82,7 @@ void displayTransactions() {
         return;
     }
 
-    cout << padRight("\nID", 6);
+    cout << padRight("\nID", 6);  //calls padRight function
     cout << padRight("Amount", 14);
     cout << padRight("Category", 17);
     cout << padRight("Date", 14);
@@ -90,9 +90,9 @@ void displayTransactions() {
 
     cout << "-----------------------------------------------------------\n";
 
-    for(int i = 0; i < countT; i++) {
+    for(int i = 0; i < countT; i++) { //loop through transactions array 
 
-        cout << padRight(to_string(transactions[i].id), 5);
+        cout << padRight(to_string(transactions[i].id), 5);  //number to string
 
         cout << "Rs. "<< padRight(
             to_string((int)transactions[i].amount), 10
@@ -107,11 +107,11 @@ void displayTransactions() {
 }
 
 Transaction* getTransactions() {
-    return transactions;
+    return transactions;   //returns pointer to transactions array
 }
 
 int getCount() {
-    return countT;
+    return countT;  //returns transaction count
 }
 
 void deleteTransaction(int id) {
@@ -143,11 +143,11 @@ void deleteTransaction(int id) {
 
 void bubbleSortTransactions() {
 
-    for(int i = 0; i < countT - 1; i++) {
+    for(int i = 0; i < countT - 1; i++) { //how many passes needed
 
-        for(int j = 0; j < countT - i - 1; j++) {
+        for(int j = 0; j < countT - i - 1; j++) { //check each pair
 
-            bool shouldSwap = false;
+            bool shouldSwap = false;  //bool variable
 
             if(transactions[j].amount >
                transactions[j + 1].amount) {
