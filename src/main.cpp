@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../include/ListManager.h"
 #include "../include/StackManager.h"
-#include "../include/HashTable.h"
+#include "../include/CategoryManager.h"
 
 using namespace std;
 

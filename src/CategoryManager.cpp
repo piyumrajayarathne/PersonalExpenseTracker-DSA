@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../include/HashTable.h"
+#include "../include/CategoryManager.h"
 
 using namespace std;
 

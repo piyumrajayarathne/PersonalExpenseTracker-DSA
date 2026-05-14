@@ -1,5 +1,5 @@
-#ifndef HASHTABLE_H
-#define HASHTABLE_H
+#ifndef CATEGORYMANAGER_H
+#define CATEGORYMANAGER_H
 #include <string>
 using namespace std;
 
