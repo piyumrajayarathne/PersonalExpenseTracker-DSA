@@ -6,7 +6,7 @@ using namespace std;
 string categories[10];
 float expenseTotals[10];
 float incomeTotals[10];
-int sizeT = 0;
+int sizeT = 0;      /*Number of categories stored*/
 
 float totalIncome = 0;
 float totalExpense = 0;
@@ -30,10 +30,10 @@ void updateCategory(string category, float amount, string type) {
     }
 
     if(type == "expense") {
-        expenseTotals[index] += amount;
+        expenseTotals[index] += amount;     /*Total expense of each category*/
         totalExpense += amount;
     } else if(type == "income") {
-        incomeTotals[index] += amount;
+        incomeTotals[index] += amount;     /*Total income of each category*/
         totalIncome += amount;
     }
 }
